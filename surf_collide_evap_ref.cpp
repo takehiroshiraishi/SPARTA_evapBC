@@ -41,7 +41,7 @@ enum{NUMERIC,CUSTOM,VARIABLE,VAREQUAL,VARSURF};   // surf_collide classes
 SurfCollideEvapRef::SurfCollideEvapRef(SPARTA *sparta, int narg, char **arg) :
   SurfCollide(sparta, narg, arg)
 {
-  if (narg < 4) error->all(FLERR,"Illegal surf_collide diffuse command");
+  if (narg < 4) error->all(FLERR,"Illegal surf_collide evapref command");
 
   parse_tsurf(arg[2]);
 
