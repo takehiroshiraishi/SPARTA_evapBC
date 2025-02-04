@@ -35,24 +35,11 @@ class SurfCollideEvapRef : public SurfCollide {
   virtual void init();
   Particle::OnePart *collide(Particle::OnePart *&, double &,
                              int, double *, int, int &);
-  void wrapper(Particle::OnePart *, double *, int *, double*);
-  void flags_and_coeffs(int *, double *);
 
  protected:
   double acc;                // surface accomodation coeff
-  double vx,vy,vz;           // translational velocity of surface
-  double wx,wy,wz;           // angular velocity of surface
-  double px,py,pz;           // point to rotate surface around
-  int tflag,rflag;           // flags for translation and rotation
-  int trflag;                // 1 if either tflag or rflag is set
-
-  Surf::Line *lines;
-  Surf::Tri *tris;
-
-  double vstream[3];
   class RanKnuth *random;     // RNG for particle reflection
 
-  void diffuse(Particle::OnePart *, double *);
 };
 
 }
