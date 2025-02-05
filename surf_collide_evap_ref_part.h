@@ -39,8 +39,8 @@ class SurfCollideEvapRefPart : public SurfCollide {
  protected:
   double acc;                // surface accomodation coeff
   int direction;
-  double liqmin;
-  double liqmax;
+  double liqmin;        // min value of liquid surface
+  double liqmax;        // max value of liquid surface
   class RanKnuth *random;     // RNG for particle reflection
 
 };

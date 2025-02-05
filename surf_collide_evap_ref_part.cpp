@@ -110,21 +110,12 @@ collide(Particle::OnePart *&ip, double &,
 {
   nsingle++;
   double *x = ip->x; // particle position
-  int diffuse = 0;
   
-  if (direction >= 0){
-    if (x[direction] < liqmin || x[direction] > liqmax){
-      MathExtra::reflect3(ip->v,norm);
-    } else if (random->uniform() < acc) {
-      ip = NULL;
-    } else {
-      diffuse = 1;
-    }
+  if ( direction > 0 && (x[direction] < liqmin || x[direction] > liqmax )){
+    MathExtra::reflect3(ip->v,norm);
+  } else if (random->uniform() < acc) {
+    ip = NULL;
   } else {
-    diffuse = 1;
-  }
-
-  if (diffuse == 1) {
     double *v = ip->v; // particle velocity
     double tangent1[3],tangent2[3];
     Particle::Species *species = particle->species;
