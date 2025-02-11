@@ -49,9 +49,9 @@ SurfCollideEvapRefPart::SurfCollideEvapRefPart(SPARTA *sparta, int narg, char **
   if (acc < 0.0 || acc > 1.0)
     error->all(FLERR,"Illegal surf_collide diffuse command");
   if (narg == 4){
-    direction = -1;
+    // direction = -1;
     liqmin = 0.0;
-    liqmax = 0.0;
+    liqmax = 1.0;
   } else if (narg == 7){
     direction = atoi(arg[4]);
     liqmin = atof(arg[5]);
@@ -111,9 +111,10 @@ collide(Particle::OnePart *&ip, double &,
   nsingle++;
   double *x = ip->x; // particle position
   
-  if ( direction >= 0 && (x[direction] < liqmin || x[direction] > liqmax )){
-    MathExtra::reflect3(ip->v,norm);
-  } else if (random->uniform() < acc) {
+  // if ( direction >= 0 && (x[direction] < liqmin || x[direction] > liqmax )){
+  //   MathExtra::reflect3(ip->v,norm);
+  // } else 
+  if ( x[direction] >= liqmin && x[direction] <= liqmax && random->uniform() < acc) {
     ip = NULL;
   } else {
     double *v = ip->v; // particle velocity
