@@ -111,7 +111,7 @@ collide(Particle::OnePart *&ip, double &,
   nsingle++;
   double *x = ip->x; // particle position
   
-  if ( direction > 0 && (x[direction] < liqmin || x[direction] > liqmax )){
+  if ( direction >= 0 && (x[direction] < liqmin || x[direction] > liqmax )){
     MathExtra::reflect3(ip->v,norm);
   } else if (random->uniform() < acc) {
     ip = NULL;
